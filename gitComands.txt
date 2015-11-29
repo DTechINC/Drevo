@@ -1,0 +1,4 @@
+git reser --hard HEAD~1 - удаление последнего комита
+$ git checkout -b iss53 - создание ветки и переход на нее
+git merge hotfix - слияние изменений из ветки hotfix в текущую ветку
+$ git branch -d hotfix - удаление ветки hotfix

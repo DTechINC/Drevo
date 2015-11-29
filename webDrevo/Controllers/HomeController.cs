@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using webDrevo.Models;
 
 namespace webDrevo.Controllers
 {
@@ -10,21 +11,14 @@ namespace webDrevo.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            EFTreesRepository rp = new EFTreesRepository();           
+            return View(rp.GetFolders());
         }
 
-        public ActionResult About()
+        protected override void Dispose(bool disposing)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+           // db.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
