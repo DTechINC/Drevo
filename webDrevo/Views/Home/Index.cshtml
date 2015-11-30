@@ -1,23 +1,30 @@
-﻿@model IEnumerable<webDrevo.Models.Folder>
-@{
-    Layout = null;
+﻿@helper getChild(bool usl, int ID)
+{
+foreach (webDrevo.Models.Folder fld in Model)
+{
+    if (fld.ParentID==ID)
+    {
+        <li>
+            <ul>
+                <li>@fld.Name</li>
+            </ul>
+        </li>
+    }
+}
 }
 <div>
-    <h3>Список каталогов</h3>
-    <table>
-        <tr class="header">
-            <td><p>ID Катлога</p></td>
-            <td><p>Имя каталога</p></td>
-            <td><p>ID родителя</p></td>
-            <td></td>
-        </tr>
+    <h2>Древо каталогов</h2>   
+    <ul>
         @foreach (webDrevo.Models.Folder b in Model)
-            {
-            <tr>
-                <td><p>@b.Id</p></td>
-                <td><p>@b.Name</p></td>
-                <td><p>@b.ParentID</p></td>
-            </tr>
+        {         
+                if (b.ParentID == 0)
+                {
+                    <li>
+                        @b.Name;
+                    </li>                                        
+                    @getChild(false,b.Id);
+
+            }
         }
-    </table>
+    </ul>
 </div>

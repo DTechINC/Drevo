@@ -20,5 +20,10 @@ namespace webDrevo
         {
             return context.Folders;
         }
+
+        public Folder getChild(int ID)
+        {
+            return context.Folders.FirstOrDefault(x=> x.ParentID==ID);
+        }
     }
 }

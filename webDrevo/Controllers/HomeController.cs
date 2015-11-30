@@ -11,13 +11,13 @@ namespace webDrevo.Controllers
     {
         public ActionResult Index()
         {
-            EFTreesRepository rp = new EFTreesRepository();           
+
+            EFTreesRepository rp = new EFTreesRepository();
             return View(rp.GetFolders());
         }
 
         protected override void Dispose(bool disposing)
-        {
-           // db.Dispose();
+        {            
             base.Dispose(disposing);
         }
     }
